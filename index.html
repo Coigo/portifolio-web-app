@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section id="firstPage">
+            <div id="mainTitle">
+                <h2>Luiz Miguel Ribeiro</h2>
+                <div>
+                    <span id="redesSociais">
+                        <a href=""><i class="fa-brands fa-square-github"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    </span>
+
+                    <h3>Desenvolvedor Web</h3>
+                </div>
+            </div>
+            <span></span>
+        </section>
+        <section id="secondPage">
+            <div id="chatDescription">
+                <span>
+                    <h2><a href="">Node-js chat</a></h2>
+                    <p>Um projeto desenvolvido como parte do curso <a
+                            href="https://pll.harvard.edu/course/cs50-introduction-computer-science">CS50</a> da
+                        Universidade de Harvard.</p>
+                </span>
+            </div>
+            <div id="chat">
+                <div id="cover"></div>
+                <div id="messageContainer"></div>
+                <span>
+                    <input id="messageInput" type="text"> <button id="submitMessage" type="button"><i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </span>
+            </div>
+        </section>
+        <section id="thirdPage">
+            <div id="suveContainer">
+                <div id="suve">
+                    <div id="header">
+                        <div class="topButton"></div>
+                        <hr>
+                    </div>
+                    <div id="videoContainer">
+                        <span class="video"></span>
+                        <span class="video"></span>
+                        <span class="video"></span>
+                        <span class="video"></span>
+                        <span class="video"></span>
+                        <span class="video"></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span id="suveDescription">
+                    <h2><a href="">Streaming de videos</a></h2>
+                    <p>Um site que streaming de videos educacionais como atividade extensionista do curso de Engenharia de Software da Uninter</p>
+                </span>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        const messages = []
+
+
+        const submitMessage = document.getElementById("submitMessage")
+        const messageInput = document.getElementById("messageInput")
+
+        submitMessage.addEventListener("click", () => {
+
+            if (haveMessageBeenWriten()) {
+                createMessageContent(messageInput.value)
+                clearInput()
+            }
+        })
+
+        document.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                if (haveMessageBeenWriten()) {
+                    createMessageContent(messageInput.value)
+                    clearInput()
+                }
+            }
+        })
+
+        function haveMessageBeenWriten() {
+            if (!messageInput.value || messageInput.value == '') {
+                return false
+            }
+            return true
+        }
+
+        function createMessageContent(message) {
+            const messageContent = document.createElement('p')
+            messageContent.classList.add('message')
+            messageContent.innerHTML = message
+            addMessageToChat(messageContent)
+        }
+
+        function addMessageToChat(message) {
+            const container = document.getElementById('messageContainer')
+            container.appendChild(message)
+        }
+
+        function clearInput() {
+            messageInput.value = ''
+        }
+
+    </script>
+
+</body>
+
+</html>
