@@ -12,24 +12,47 @@
 
 <body>
     <main>
+        <!--  Pagina inicial -->
         <section id="firstPage">
             <div id="mainTitle">
                 <h2>Luiz Miguel Ribeiro</h2>
                 <div>
                     <span id="redesSociais">
-                        <a href=""><i class="fa-brands fa-square-github"></i></a>
-                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Coigo"><i class="fa-brands fa-square-github"></i></a>
+                        <a href="https://www.linkedin.com/in/luiz-miguel-ribeiro-9057b226a/"><i
+                                class="fa-brands fa-linkedin"></i></a>
                     </span>
 
                     <h3>Desenvolvedor Web</h3>
+
                 </div>
             </div>
-            <span></span>
+            <div >
+                <div class="mainDescription">
+                    <p> <li>Futuro Engenheiro de Software especializado em Desenvolvimento Web, com experiência tanto em
+                        back-end quanto em front-end. Possuo conhecimento no ecossistema JavaScript e PHP.</li> </p>
+
+                </div>
+                <div class="mainDescription">
+                    <p> <li> <b>Sobre mim</b> - Meus hobbies favoritos são jogar algum rpg e assitir desenhos como Avatar. As vezes eu costumo ler.</li> </p>
+
+                </div>
+                <div class="mainDescription">
+                    <p> 
+                        <li>Email para contato: migueelcoi@gmail.com</li>
+                        <li><a href="https://www.linkedin.com/in/luiz-miguel-ribeiro-9057b226a/">LinkedIn</a></li>
+                        <li> <a href="https://github.com/Coigo">GitHub</a></li>
+                    </p>
+
+                </div>
+            </div>
+            <span id="down"> <i class="fa-solid fa-chevron-down"></i></span>
         </section>
+        <!--  Segunda pagina -->
         <section id="secondPage">
             <div id="chatDescription">
                 <span>
-                    <h2><a href="">Node-js chat</a></h2>
+                    <h2><a href="https://github.com/Coigo/Node.js-Chat">Node-js chat</a></h2>
                     <p>Um projeto desenvolvido como parte do curso <a
                             href="https://pll.harvard.edu/course/cs50-introduction-computer-science">CS50</a> da
                         Universidade de Harvard.</p>
@@ -44,40 +67,56 @@
                 </span>
             </div>
         </section>
+        <!--  Terceira pagina -->
         <section id="thirdPage">
-            <div id="suveContainer">
-                <div id="suve">
-                    <div id="header">
-                        <div class="topButton"></div>
-                        <hr>
-                    </div>
-                    <div id="videoContainer">
-                        <span class="video"></span>
-                        <span class="video"></span>
-                        <span class="video"></span>
-                        <span class="video"></span>
-                        <span class="video"></span>
-                        <span class="video"></span>
-                    </div>
-                </div>
+            <div id="videoContainer">
+                <div class="videoCover"></div> <!--  Fade out dos videos --> 
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
+                <span class="video"></span>
             </div>
-            <div>
-                <span id="suveDescription">
-                    <h2><a href="">Streaming de videos</a></h2>
-                    <p>Um site que streaming de videos educacionais como atividade extensionista do curso de Engenharia de Software da Uninter</p>
+            <div id="suveDescription">
+                <span>
+                    <h2><a href="https://github.com/Coigo/Suve">Streaming de videos</a></h2>
+                    <p> <b>(EM DESENVOLVIMENTO)</b> Um site que streaming de videos educacionais como atividade
+                        extensionista do curso de Engenharia
+                        de Software da Uninter.</p>
                 </span>
             </div>
+        </section>
+        <section id="fourthPage">
+            <form >
+                <div id="formContainer">
+                <h2>Entre em contato!</h2>
+                    <label for="email">Email:</label>
+                    <input class="formInput"  id="email" name="email" type="email">
+
+                    <label for="nome">Nome:</label>
+                    <input class="formInput" id="nome"  name="nome" type="text">
+
+                    <input class="formInput"  id="text" placeholder="Mensagem" name="text" type="text">
+                
+                    <button id="submitButton">Submit</button>
+                </div>
+            </form>
         </section>
     </main>
 
 
     <script>
-        const messages = []
-
-
         const submitMessage = document.getElementById("submitMessage")
         const messageInput = document.getElementById("messageInput")
 
+        // Manda a mensagem ao clicar no botao 
         submitMessage.addEventListener("click", () => {
 
             if (haveMessageBeenWriten()) {
@@ -86,6 +125,7 @@
             }
         })
 
+        // Manda a mensagem ao clicar no enter
         document.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
                 if (haveMessageBeenWriten()) {
@@ -95,6 +135,7 @@
             }
         })
 
+        // Verifica se possui mensagem antes de mandar
         function haveMessageBeenWriten() {
             if (!messageInput.value || messageInput.value == '') {
                 return false
@@ -102,6 +143,7 @@
             return true
         }
 
+        // Cria o paragrafo para adicionar ao container
         function createMessageContent(message) {
             const messageContent = document.createElement('p')
             messageContent.classList.add('message')
@@ -109,11 +151,13 @@
             addMessageToChat(messageContent)
         }
 
+        // Adiciona o paragrafo ao container        
         function addMessageToChat(message) {
             const container = document.getElementById('messageContainer')
             container.appendChild(message)
         }
 
+        // Limpa o input de mensagens        
         function clearInput() {
             messageInput.value = ''
         }

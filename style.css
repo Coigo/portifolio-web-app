@@ -4,18 +4,33 @@
 * {
     margin: 0;
     padding: 0;
-    color: white;
+    color: rgb(200, 200, 200);
     font-family: "Inter", sans-serif;
 
+}
+
+/* Deixar o scroll bonitinho */
+main::-webkit-scrollbar {
+    background-color: rgb(16, 14, 26);
+    
+    width: 0.8vh;
+    
+}
+main::-webkit-scrollbar-thumb {
+    background-color: rgb(126, 126, 126);
+    border-radius: 10px;
+    
 }
 
 main {
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
     background-color: #121214;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
+/* Alinhando as sections ao scrolar */
 main section {
     scroll-snap-align: start;
     height: 100%;
@@ -24,15 +39,32 @@ main section {
 
 }
 
+p {
+    font-size: 1.1rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
 #firstPage {
+    position: relative;
+    display: flex;
     justify-content: space-around;
+    
+}
+
+#down {
+    position: absolute;
+    bottom: 7vh;
+
 }
 
 #mainTitle {
 
-    width: fit-content;
+    width: 40vw;
     display: flex;
     flex-direction: column;
+    
 
     h2 {
         font-size: 5rem;
@@ -43,13 +75,42 @@ main section {
         text-align: center;
         justify-content: space-between;
         display: flex;
+        margin-bottom: 6vh;
 
         h3 {
             font-size: 2rem;
             color: blueviolet;
         }
     }
+    
 }
+.mainDescription {
+    border: 1px solid gray;
+    background-color: #141418;
+    background-image: none;
+    border-radius: 12px;
+    padding: 2.5vw;
+    width:  30vw;
+    transition: border 0.5s ease-in-out;
+    margin: 4vh 0;
+}
+
+.mainDescription:hover {
+    border: 1px solid #f2f2f2;
+}
+
+#redesSociais {
+    text-align: center;
+    padding: 0 40px;
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#redesSociais a {
+    font-size: 2.2rem;
+}
+
 
 #chatDescription {
     width: 60%;
@@ -75,16 +136,16 @@ main section {
     border-width: 0 0 0 1px;
     border-style: solid;
     border-radius: 20px;
-    border-image: linear-gradient(to top, gray, rgba(255, 255, 255, 0)) 1;
+    border-image: linear-gradient(to top, rgba(255, 255, 255, 0), gray, rgba(255, 255, 255, 0)) 1;
     height: 90%;
-    
+
 
     span {
         display: flex;
         width: 100%;
         padding: 0;
         justify-content: space-evenly;
-        
+
         button {
             padding: 12px;
             width: 7%;
@@ -111,21 +172,25 @@ main section {
     justify-content: end;
     width: 100%;
     height: 85%;
-    overflow-y: auto;
-
-    .message {
-        padding: 8px;
-    }
-
+    overflow-x: hidden;
 }
 
+.message {
+    padding: 8px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+
+/* fade out das mensagens */
 #cover {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 40%;
-    background: linear-gradient(180deg, rgba(18,18,20,1) 14%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(180deg, rgba(18, 18, 20, 1) 14%, rgba(255, 255, 255, 0) 100%);
 
 }
 
@@ -133,43 +198,129 @@ main section {
     font-size: 1rem;
     margin-bottom: 4px;
     border: none;
-    border-bottom: solid 1px darkgray;
+    border-bottom: solid 1px #2f2f2f;
     width: 85%;
     background-color: transparent;
     padding: 10px;
+    transition: border-bottom ease-in-out 0.5s;
 
 }
 
 #messageInput:focus {
+    border-bottom: solid 1px #f2f2f2;
     outline: none;
 }
 
-#redesSociais {
-    text-align: center;
-    padding: 0 40px;
-    gap: 2rem;
-    display: flex;
-    align-items: center;
-}
-
-#redesSociais a {
-    font-size: 2.2rem;
-}
-
-
 #thirdPage {
     display: flex;
-    
-    div {
-        width: 40%;
-    }
-    
+
 }
 
-#suveContainer {
-    width: 60%;
-    
-}
 #suveDescription {
-    width: 70%;
+    width: 40%;
+
+    span {
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+    }
+
+    ;
 }
+
+/* fade out dos videos */
+.videoCover {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #000;
+    height: 100%;
+    width: 15vw;
+    margin-right: 5vw;
+    z-index: 2;
+    background: linear-gradient(-90deg, rgba(18, 18, 20, 1) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+#videoContainer {
+    position: relative;
+    width: 60%;
+    height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding: 5vh 0 0 1.5rem;
+    cursor: pointer;
+
+}
+
+.video {
+    width: 15vw;
+    height: 15vh;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+
+    background-color: #1F1F1F;
+}
+
+/* gradiente ao passar o mouse por cima do card video */
+.video::after {
+    border-radius: 8px;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(58, 58, 64, 0.5) 0%, rgba(31, 31, 31, 0.5) 100%);
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.video:hover::after {
+    opacity: 1;
+}
+
+#fourthPage {
+    display: flex;
+}
+
+#formContainer {
+    padding: 10vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+}
+.formInput {
+    padding: 16px;
+    border-radius: 4px;
+    width: 50%;
+    background-color: transparent;
+    border: 1px solid rgb(89, 89, 89);
+    margin: 4px 0px 5vh 0px ;
+}
+
+#submitButton {
+    background-color: blueviolet;
+    padding: 16px 4vw;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    width: fit-content;
+}
+
+#submitButton:hover {
+    transition: background-color 0.2s ease;
+    background-color: rgb(96, 28, 160);
+}
+
